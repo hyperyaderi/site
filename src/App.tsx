@@ -6,7 +6,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import Player from "./components/Player";
 import MobilePlayer from "./components/MobilePlayer";
 import Contacts from "./components/Contacts";
-import Chat from "./components/Chat";
+// import Chat from "./components/Chat";
 import { BrowserView, MobileView } from "react-device-detect";
 
 function App() {
@@ -86,9 +86,9 @@ function App() {
 							<Contacts />
 						</Stack>
 						<Box flex="1" />
-						<Box h="full" paddingTop={10} paddingBottom={10}>
+						{/* <Box h="full" paddingTop={10} paddingBottom={10}>
 							<Chat />
-						</Box>
+						</Box> */}
 					</Stack>
 				</Center>
 			</Box>
