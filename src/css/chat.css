@@ -1,0 +1,8 @@
+.chat::-webkit-scrollbar {
+	display: none;
+}
+
+.chat {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
