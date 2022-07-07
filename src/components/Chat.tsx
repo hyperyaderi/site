@@ -152,6 +152,7 @@ function Chat() {
 			maxW="md"
 			h="full"
 			maxH="100vh"
+			overflow="hidden"
 		>
 			<Box>
 				<Box borderBottom="1px" borderBottomColor="white">
