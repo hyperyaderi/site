@@ -52,14 +52,12 @@ function Chat() {
 
 	React.useEffect(() => {
 		getMessages(true);
+		const interval = setInterval(() => getMessages(false), 3000);
+		return () => {
+			clearInterval(interval);
+		};
 		// eslint-disable-next-line
 	}, []);
-
-	const Interval = () => {
-		getMessages(false);
-	};
-
-	setInterval(Interval, 3000);
 
 	const sTest = (s: string) => {
 		if (s === "") return false;

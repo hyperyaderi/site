@@ -61,14 +61,12 @@ function Player() {
 
 	React.useEffect(() => {
 		getInfo(true);
+		const interval = setInterval(() => getInfo(false), 8000);
+		return () => {
+			clearInterval(interval);
+		};
 		// eslint-disable-next-line
 	}, []);
-
-	const Interval = () => {
-		getInfo(false);
-	};
-
-	setInterval(Interval, 8000);
 
 	return (
 		<Box

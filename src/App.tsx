@@ -1,20 +1,41 @@
 import React from "react";
 import { Box, Center, Stack, Heading } from "@chakra-ui/react";
 import bg from "./images/bg.png";
+import bg_night from "./images/bg_night.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Player from "./components/Player";
 import MobilePlayer from "./components/MobilePlayer";
 import Contacts from "./components/Contacts";
-// import Chat from "./components/Chat";
+import Chat from "./components/Chat";
 import { BrowserView, MobileView } from "react-device-detect";
+import "./css/app.css";
 
 function App() {
+	const [theme, setTheme] = React.useState<string>("light");
+	const [time, setTime] = React.useState<number>(new Date().getHours());
+
+	React.useEffect(() => {
+		const interval = setInterval(() => setTime(new Date().getHours()), 60000);
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
+
+	React.useEffect(() => {
+		if (time > 6 && time < 21) {
+			setTheme("light");
+		} else {
+			setTheme("night");
+			document.body.style.background = "#5644C7";
+		}
+	}, [time]);
+
 	return (
 		<Box w="full" h="full">
 			<LazyLoadImage
 				sizes="100vw"
-				src={bg}
+				src={theme === "light" ? bg : bg_night}
 				style={{
 					position: "fixed",
 					inset: "0px",
@@ -83,12 +104,12 @@ function App() {
 								</MobileView>
 							</Center>
 							<Box flex="1" />
-							<Contacts />
+							<Contacts theme={theme} />
 						</Stack>
 						<Box flex="1" />
-						{/* <Box h="full" paddingTop={10} paddingBottom={10}>
+						<Box h="full" paddingTop={10} paddingBottom={10}>
 							<Chat />
-						</Box> */}
+						</Box>
 					</Stack>
 				</Center>
 			</Box>

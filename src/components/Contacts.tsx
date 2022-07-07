@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text, Stack, Link, Center } from "@chakra-ui/react";
 
-function Contacts() {
+function Contacts({ theme }: { theme: string }) {
 	return (
 		<Box
 			bgColor="rgba(255, 255, 255, 0.15)"
@@ -87,7 +87,12 @@ function Contacts() {
 							lineHeight="19px"
 						>
 							наш партнер:{" "}
-							<Link color="#EDB5A5B2" href="https://vk.com/hyperpop">
+							<Link
+								color={
+									theme === "light" ? "#EDB5A5B2" : "rgba(106, 79, 255, 0.7)"
+								}
+								href="https://vk.com/hyperpop"
+							>
 								vk.com/hyperpop
 							</Link>
 						</Text>

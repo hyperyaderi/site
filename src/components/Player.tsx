@@ -67,14 +67,12 @@ function Player() {
 
 	React.useEffect(() => {
 		getInfo(true);
+		const interval = setInterval(() => getInfo(false), 8000);
+		return () => {
+			clearInterval(interval);
+		};
 		// eslint-disable-next-line
 	}, []);
-
-	const Interval = () => {
-		getInfo(false);
-	};
-
-	setInterval(Interval, 8000);
 
 	return (
 		<Box
@@ -148,7 +146,9 @@ function Player() {
 								min={1}
 								max={10}
 								colorScheme="white"
-								onChange={(val) => setVolume(val / 10)}
+								onChange={(val) => {
+									setVolume(val / 10);
+								}}
 								defaultValue={volume * 10}
 							>
 								<SliderTrack>
