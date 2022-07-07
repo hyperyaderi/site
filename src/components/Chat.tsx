@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import "../css/chat.css";
+import Cookies from "js-cookie";
 
 interface Message {
 	name: string;
@@ -21,7 +22,9 @@ interface Message {
 function Chat() {
 	const toast = useToast();
 
-	const [name, setName] = React.useState<string | null>(null);
+	const [name, setName] = React.useState<string | undefined>(
+		Cookies.get("chat-name")
+	);
 	const [messages, setMessages] = React.useState<Message[] | null>(null);
 
 	const [messageInput, setMessageInput] = React.useState<string>("");
@@ -74,6 +77,7 @@ function Chat() {
 	const handleNameChange = () => {
 		if (sTest(nameInput)) {
 			setName(nameInput);
+			Cookies.set("chat-name", nameInput, { expires: 7 });
 			return;
 		}
 

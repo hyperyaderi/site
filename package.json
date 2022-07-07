@@ -15,6 +15,7 @@
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
     "framer-motion": "^6.4.2",
+    "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-awesome-audio": "^1.1.0",
     "react-device-detect": "^2.2.2",
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.2",
     "@types/react-lazy-load-image-component": "^1.5.2"
   }
 }
