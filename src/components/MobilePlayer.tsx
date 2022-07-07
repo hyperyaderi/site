@@ -144,7 +144,13 @@ function Player() {
 						min={1}
 						max={10}
 						colorScheme="white"
-						onChange={(val) => setVolume(val / 10)}
+						onChange={(val) => {
+							if (val === 1) {
+								setVolume(0.0000000001);
+								return;
+							}
+							setVolume(val / 10);
+						}}
 						defaultValue={volume * 10}
 					>
 						<SliderTrack>

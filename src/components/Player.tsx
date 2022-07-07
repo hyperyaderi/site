@@ -147,6 +147,10 @@ function Player() {
 								max={10}
 								colorScheme="white"
 								onChange={(val) => {
+									if (val === 1) {
+										setVolume(0.0000000001);
+										return;
+									}
 									setVolume(val / 10);
 								}}
 								defaultValue={volume * 10}
