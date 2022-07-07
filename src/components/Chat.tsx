@@ -115,7 +115,6 @@ function Chat() {
 
 	const handleMessageChange = async () => {
 		if (sTest(messageInput)) {
-			setName(messageInput);
 			try {
 				await axios.post("https://chat.hyperyaderi.ru/sendMessage", {
 					name: name,
