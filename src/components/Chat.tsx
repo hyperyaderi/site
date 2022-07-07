@@ -59,7 +59,7 @@ function Chat() {
 		getMessages(false);
 	};
 
-	setInterval(Interval, 2000);
+	setInterval(Interval, 3000);
 
 	const sTest = (s: string) => {
 		if (s === "") return false;

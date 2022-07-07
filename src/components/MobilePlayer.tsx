@@ -68,7 +68,7 @@ function Player() {
 		getInfo(false);
 	};
 
-	setInterval(Interval, 5000);
+	setInterval(Interval, 8000);
 
 	return (
 		<Box
