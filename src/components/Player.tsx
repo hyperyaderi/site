@@ -1,5 +1,4 @@
 import React from "react";
-import { useAudio } from "react-awesome-audio";
 import {
 	Box,
 	Text,
@@ -13,6 +12,7 @@ import {
 	Center,
 } from "@chakra-ui/react";
 import axios from "axios";
+import ReactPlayer from "react-player/lazy";
 
 function Player() {
 	const [volume, setVolume] = React.useState<number>(0.5);
@@ -21,11 +21,8 @@ function Player() {
 		"Loading information..."
 	);
 
-	const { isPlaying, toggle } = useAudio({
-		src: "https://radio.hyperyaderi.ru/radio",
-		loop: true,
-		volume: volume,
-	});
+	const [src, setSrc] = React.useState<string>("");
+	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
 	const toast = useToast();
 
@@ -74,6 +71,16 @@ function Player() {
 		// eslint-disable-next-line
 	}, []);
 
+	const toggle = () => {
+		if (isPlaying) {
+			setSrc("");
+			setIsPlaying(false);
+		} else {
+			setSrc("https://radio.hyperyaderi.ru/radio");
+			setIsPlaying(true);
+		}
+	};
+
 	return (
 		<Box
 			bgColor="rgba(255, 255, 255, 0.15)"
@@ -82,6 +89,9 @@ function Player() {
 			backdropFilter="blur(35px)"
 			w="100%"
 		>
+			<Box display="none">
+				<ReactPlayer url={src} playing={isPlaying} volume={volume} />
+			</Box>
 			<Box m="20px">
 				<Stack
 					direction={["column", "row"]}
