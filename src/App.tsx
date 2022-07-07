@@ -25,6 +25,7 @@ function App() {
 	React.useEffect(() => {
 		if (time > 6 && time < 21) {
 			setTheme("light");
+			document.body.style.background = "#EDB5A5";
 		} else {
 			setTheme("night");
 			document.body.style.background = "#5644C7";
@@ -108,7 +109,7 @@ function App() {
 						</Stack>
 						<Box flex="1" />
 						<Box h="full" paddingTop={10} paddingBottom={10}>
-							<Chat />
+							<Chat theme={theme} />
 						</Box>
 					</Stack>
 				</Center>

@@ -16,10 +16,10 @@ import Cookies from "js-cookie";
 interface Message {
 	name: string;
 	message: string;
-	created_at?: string;
+	created_at: Date;
 }
 
-function Chat() {
+function Chat({ theme }: { theme: string }) {
 	const toast = useToast();
 
 	const [name, setName] = React.useState<string | undefined>(
@@ -92,14 +92,24 @@ function Chat() {
 	const MessageBlock = (props: Message) => (
 		<Box>
 			<Stack direction="column" spacing="1px">
-				<Text
-					color="rgba(228, 228, 228, 0.8)"
-					fontWeight="400"
-					fontSize="14px"
-					lineHeight="16px"
-				>
-					{props.name}
-				</Text>
+				<Stack direction="row" justifyContent="space-between">
+					<Text
+						color="rgba(228, 228, 228, 0.8)"
+						fontWeight="400"
+						fontSize="14px"
+						lineHeight="16px"
+					>
+						{props.name}
+					</Text>
+					<Text
+						color="rgba(228, 228, 228, 0.8)"
+						fontWeight="400"
+						fontSize="12px"
+						lineHeight="14px"
+					>
+						{new Date(props.created_at).toLocaleTimeString()}
+					</Text>
+				</Stack>
 				<Text
 					color="rgba(255, 255, 255, 0.9)"
 					fontWeight="400"
@@ -174,7 +184,7 @@ function Chat() {
 									bgColor="rgba(255, 255, 255, 0.15)"
 									border="1px solid #FFFFFF"
 									borderRadius="20px"
-									focusBorderColor="#EDB5A5"
+									focusBorderColor={theme === "light" ? "#EDB5A5" : "#5644C7"}
 								/>
 							</FormControl>
 							<Center>
@@ -201,7 +211,7 @@ function Chat() {
 										bgColor="rgba(255, 255, 255, 0.15)"
 										border="1px solid #FFFFFF"
 										borderRadius="20px"
-										focusBorderColor="#EDB5A5"
+										focusBorderColor={theme === "light" ? "#EDB5A5" : "#5644C7"}
 									/>
 								</FormControl>
 								<Center>
@@ -241,7 +251,11 @@ function Chat() {
 						{messages && (
 							<>
 								{messages.map((message) => (
-									<MessageBlock name={message.name} message={message.message} />
+									<MessageBlock
+										name={message.name}
+										message={message.message}
+										created_at={message.created_at}
+									/>
 								))}
 							</>
 						)}
