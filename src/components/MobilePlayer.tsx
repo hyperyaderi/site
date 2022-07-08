@@ -13,6 +13,7 @@ import {
 	Center,
 } from "@chakra-ui/react";
 import axios from "axios";
+import DownloadButton from "./DownloadButton";
 
 function Player() {
 	const [volume, setVolume] = React.useState<number>(0.5);
@@ -140,14 +141,17 @@ function Player() {
 						</Button>
 					</Center>
 					<Box flex="1" />
-					<Text
-						fontSize="16px"
-						fontWeight="400"
-						lineHeight="19px"
-						color="rgba(255, 255, 255, 0.8)"
-					>
-						{title}
-					</Text>
+					<Box>
+						<Text
+							fontSize="16px"
+							fontWeight="400"
+							lineHeight="19px"
+							color="rgba(255, 255, 255, 0.8)"
+						>
+							{title}
+						</Text>
+						<DownloadButton title={title} isMobile={true} />
+					</Box>
 					<Box flex="1" />
 					<Slider
 						aria-label="slider"

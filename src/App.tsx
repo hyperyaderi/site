@@ -74,7 +74,8 @@ function App() {
 					>
 						<Box flex="1" />
 						<Stack
-							maxW={["full", "2xl"]}
+							maxW={["full", "md"]}
+							minW={["full", "md"]}
 							h="full"
 							spacing={["30px", "0px"]}
 							paddingTop={10}

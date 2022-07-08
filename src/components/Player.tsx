@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import ReactPlayer from "react-player/lazy";
+import DownloadButton from "./DownloadButton";
 
 function Player() {
 	const [volume, setVolume] = React.useState<number>(0.5);
@@ -88,16 +89,14 @@ function Player() {
 			borderRadius="30px"
 			backdropFilter="blur(35px)"
 			w="100%"
+			maxW={["full", "md"]}
+			minW={["full", "md"]}
 		>
 			<Box display="none">
 				<ReactPlayer url={src} playing={isPlaying} volume={volume} />
 			</Box>
 			<Box m="20px">
-				<Stack
-					direction={["column", "row"]}
-					spacing={["10px", "20px"]}
-					justifyContent="space-betwen"
-				>
+				<Stack direction="row" justifyContent="space-between">
 					<Center>
 						<Button variant="unstyled" w="auto" h="auto" onClick={toggle}>
 							{(!isPlaying && (
@@ -144,7 +143,7 @@ function Player() {
 							)}
 						</Button>
 					</Center>
-					<Box>
+					<Box w="100%">
 						<Stack
 							direction="column"
 							h="full"
@@ -171,14 +170,18 @@ function Player() {
 								<SliderThumb />
 							</Slider>
 							<Box flex="1" />
-							<Text
-								fontSize="16px"
-								fontWeight="400"
-								lineHeight="19px"
-								color="rgba(255, 255, 255, 0.8)"
-							>
-								{title}
-							</Text>
+							<Box>
+								<Text
+									fontSize="16px"
+									fontWeight="400"
+									lineHeight="19px"
+									color="rgba(255, 255, 255, 0.8)"
+								>
+									{title}
+								</Text>
+								<DownloadButton title={title} isMobile={false} />
+							</Box>
+
 							<Box flex="1" />
 							<Text
 								fontSize="16px"
