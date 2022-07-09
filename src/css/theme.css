@@ -1,8 +1,10 @@
 @font-face {
 	font-family: "Stolzl Medium";
 	src: url("../fonts/stolzl_medium.otf");
+	font-display: swap;
 }
 @font-face {
 	font-family: "Stolzl Regular";
 	src: url("../fonts/stolzl_regular.otf");
+	font-display: swap;
 }

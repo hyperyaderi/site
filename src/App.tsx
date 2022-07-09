@@ -10,12 +10,19 @@ import Contacts from "./components/Contacts";
 import Chat from "./components/Chat";
 import { BrowserView, MobileView } from "react-device-detect";
 import "./css/app.css";
+import { SafariView, BrowserDetector } from "@kirillsaint/browser-detector";
+import SafariAlert from "./components/SafariAlert";
+import SafariPlayer from "./components/SafariPlayer";
 
 function App() {
 	const [theme, setTheme] = React.useState<string>("light");
 	const [time, setTime] = React.useState<number>(new Date().getHours());
+	const [isSafari, setIsSafari] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
+		if (BrowserDetector("Safari")) {
+			setIsSafari(true);
+		}
 		const interval = setInterval(() => setTime(new Date().getHours()), 60000);
 		return () => {
 			clearInterval(interval);
@@ -57,6 +64,9 @@ function App() {
 				}}
 				draggable={false}
 			/>
+			<SafariView>
+				<SafariAlert />
+			</SafariView>
 			<Box zIndex={100} position="relative">
 				<Center
 					maxW="full"
@@ -94,16 +104,26 @@ function App() {
 							</Center>
 							<Box flex="1" />
 							<Center w="100%">
-								<BrowserView>
-									<Player />
-								</BrowserView>
-								<MobileView
-									style={{
-										width: "100%",
-									}}
-								>
-									<MobilePlayer />
-								</MobileView>
+								{(!isSafari && (
+									<>
+										<BrowserView>
+											<Player />
+										</BrowserView>
+										<MobileView
+											style={{
+												width: "100%",
+											}}
+										>
+											<MobilePlayer />
+										</MobileView>
+									</>
+								)) || (
+									<>
+										<BrowserView>
+											<SafariPlayer />
+										</BrowserView>
+									</>
+								)}
 							</Center>
 							<Box flex="1" />
 							<Contacts theme={theme} />
