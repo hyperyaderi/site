@@ -10,7 +10,7 @@ import Contacts from "./components/Contacts";
 import Chat from "./components/Chat";
 import { BrowserView, MobileView } from "react-device-detect";
 import "./css/app.css";
-import { SafariView, BrowserDetector } from "@kirillsaint/browser-detector";
+import { SafariView, BrowserDetector } from "react-browser-detector";
 import SafariAlert from "./components/SafariAlert";
 import SafariPlayer from "./components/SafariPlayer";
 import SafariMobilePlayer from "./components/SafariMobilePlayer";
