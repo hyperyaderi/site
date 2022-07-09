@@ -13,6 +13,7 @@ import "./css/app.css";
 import { SafariView, BrowserDetector } from "@kirillsaint/browser-detector";
 import SafariAlert from "./components/SafariAlert";
 import SafariPlayer from "./components/SafariPlayer";
+import SafariMobilePlayer from "./components/SafariMobilePlayer";
 
 function App() {
 	const [theme, setTheme] = React.useState<string>("light");
@@ -122,6 +123,9 @@ function App() {
 										<BrowserView>
 											<SafariPlayer />
 										</BrowserView>
+										<MobileView>
+											<SafariMobilePlayer />
+										</MobileView>
 									</>
 								)}
 							</Center>
