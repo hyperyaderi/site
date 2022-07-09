@@ -7,7 +7,6 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import Player from "./components/Player";
 import MobilePlayer from "./components/MobilePlayer";
 import Contacts from "./components/Contacts";
-import Chat from "./components/Chat";
 import { BrowserView, MobileView } from "react-device-detect";
 import "./css/app.css";
 import { SafariView, BrowserDetector } from "react-browser-detector";
@@ -137,9 +136,6 @@ function App() {
 							<Contacts theme={theme} />
 						</Stack>
 						<Box flex="1" />
-						<Box h="full" paddingTop={10} paddingBottom={10}>
-							<Chat theme={theme} />
-						</Box>
 					</Stack>
 				</Center>
 			</Box>
