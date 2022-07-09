@@ -123,7 +123,11 @@ function App() {
 										<BrowserView>
 											<SafariPlayer />
 										</BrowserView>
-										<MobileView>
+										<MobileView
+											style={{
+												width: "100%",
+											}}
+										>
 											<SafariMobilePlayer />
 										</MobileView>
 									</>
